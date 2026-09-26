@@ -109,7 +109,9 @@ JOIN nota_por_pedido AS avaliacoes
 	FROM vw_frete as frete 
 	LEFT JOIN orders as pedidos
 	ON frete.order_id = pedidos.order_id
-	WHERE pedidos.order_status = 'delivered')
+	WHERE pedidos.order_status = 'delivered'
+		  AND pedidos.order_delivered_customer_date IS NOT NULL
+          AND pedidos.order_estimated_delivery_date IS NOT NULL)
 	SELECT decil, SUM(atraso) as atrasos, 
 	ROUND(AVG(atraso)::NUMERIC * 100,2) as percentual_atraso,
 	ROUND(AVG(dias_atraso),2) AS media_dias_atraso,
@@ -128,11 +130,13 @@ JOIN nota_por_pedido AS avaliacoes
 		END AS dias_atraso
 		FROM vw_frete AS frete
 		LEFT JOIN orders AS pedidos ON frete.order_id = pedidos.order_id
-		WHERE pedidos.order_status = 'delivered')
+		WHERE pedidos.order_status = 'delivered'
+			AND pedidos.order_delivered_customer_date IS NOT NULL
+            AND pedidos.order_estimated_delivery_date IS NOT NULL)
 		SELECT ROUND(CORR(frete,dias_atraso)::NUMERIC,3)
 		FROM frete_atraso;
 
--- A associação linear entre o valor total do frete e a nota do pedido foi fraca (-0,089).
+-- A associação linear entre o valor total do frete e a nota do pedido foi fraca (0,024).
 -- A seguir, investigam-se características dos pedidos com valores de frete mais elevados.
 
 -- 4. Participação dos itens de cada categoria por decil de frete do pedido
