@@ -104,5 +104,8 @@ FROM titulacao;
 
 
 -- Foram identificados pedidos com múltiplos itens em que freight_value varia entre as linhas.
+-- Segundo o dicionário de dados da Olist (Seção 'Data Card' do dataset, freight_value representa o frete atribuído a cada item. Em pedidos com múltiplos itens, o
+-- frete é dividido entre eles. Por isso, o frete total do pedido
+-- é calculado com SUM(freight_value) por order_id.
 -- Assim, freight_value não foi interpretado como um único valor de frete do pedido repetido em todas as linhas. 
-Nas análises por pedido, o frete total foi calculado pela soma de freight_value das linhas de cada order_id.
+-- Nas análises por pedido, o frete total foi calculado pela soma de freight_value das linhas de cada order_id (SUM).
