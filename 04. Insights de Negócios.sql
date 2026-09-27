@@ -136,7 +136,7 @@ JOIN nota_por_pedido AS avaliacoes
 		SELECT ROUND(CORR(frete,dias_atraso)::NUMERIC,3)
 		FROM frete_atraso;
 
--- A associação linear entre o valor total do frete e a nota do pedido foi fraca (0,024).
+-- A associação linear entre o valor total do frete e a nota do pedido foi fraca (-0,089).
 -- A seguir, investigam-se características dos pedidos com valores de frete mais elevados.
 
 -- 4. Participação dos itens de cada categoria por decil de frete do pedido
