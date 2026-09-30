@@ -20,7 +20,7 @@ O projeto usa análise exploratória para formular hipóteses de negócio; as as
 
 ## 📁 Estrutura do Projeto 
 ```text
-projeto/
+olist-analise-entregas/
 ├── 01. Criação das Tabelas.sql
 ├── 02. Qualidade dos Dados.sql
 ├── 03. Análise Exploratória.sql
